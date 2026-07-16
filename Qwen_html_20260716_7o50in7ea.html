@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт с зумом картинки</title>
+    <style>
+        /* Базовые стили для страницы */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1e1e1e;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            color: white;
+        }
+
+        /* Контейнер для картинки. overflow: hidden скрывает то, что вылезает при зуме */
+        .zoom-container {
+            width: 600px;
+            height: 400px;
+            overflow: hidden; 
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            cursor: zoom-in;
+        }
+
+        /* Стили самой картинки */
+        .zoom-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Чтобы картинка красиво вписалась */
+            
+            /* ГЛАВНОЕ СВОЙСТВО: Точка зума (X% и Y%) */
+            /* 80% по горизонтали (ближе к правому краю) и 20% по вертикали (ближе к верху) */
+            transform-origin: 80% 20%; 
+            
+            /* Плавная анимация зума */
+            transition: transform 0.6s ease-in-out;
+        }
+
+        /* Эффект при наведении мыши */
+        .zoom-container:hover .zoom-image {
+            transform: scale(2.5); /* Увеличиваем в 2.5 раза */
+        }
+
+        .hint {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Наведи курсор на картинку</h2>
+    
+    <div class="zoom-container">
+        <!-- Используем тестовую картинку из интернета -->
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800" alt="Пейзаж" class="zoom-image">
+    </div>
+
+    <div class="hint">Зум настроен на правый верхний угол (80% по X, 20% по Y)</div>
+
+</body>
+</html>
